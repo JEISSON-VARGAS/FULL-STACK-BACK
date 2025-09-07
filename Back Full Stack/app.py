@@ -1,10 +1,10 @@
 from flask import Flask
 from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from db import db
 from config import Config
 
-# ORM
-db = SQLAlchemy()
+migrate = Migrate()  # Inicializamos Migrate aquí
 
 def create_app():
     cfg = Config()
@@ -14,20 +14,28 @@ def create_app():
     app.config["SQLALCHEMY_DATABASE_URI"] = cfg.get_database_uri()
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-    # Inicializar DB
+    # Inicializar DB y Migrate
     db.init_app(app)
+    migrate.init_app(app, db)
+
+    # Importar entidades (para que Flask-Migrate las detecte)
+    from entities.vehicle import Vehicle  
+
+    # Importar y registrar controladores
+    from controllers.vehicle_controller import vehicle_bp
+    app.register_blueprint(vehicle_bp, url_prefix="/api")
 
     # Habilitar CORS
     CORS(app)
 
-    # Ruta de prueba
     @app.route("/")
     def home():
         return {"message": "API de Vehículos funcionando 🚀"}
 
     return app
 
+
 if __name__ == "__main__":
     cfg = Config()
     app = create_app()
-    app.run(debug=cfg.get_debug(), port=8080)  # 👈 Forzamos el puerto 8080
+    app.run(debug=cfg.get_debug(), port=cfg.get_port())

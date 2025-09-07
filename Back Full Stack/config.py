@@ -13,4 +13,4 @@ class Config:
         return self.cfg["app"]["debug"]
 
     def get_port(self):
-        return self.cfg["app"].get("port", 5000)  # 👈 valor por defecto 5000
+        return self.cfg["app"]["port"]
