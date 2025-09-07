@@ -1,0 +1,9 @@
+flask                       # Framework web principal (manejo de rutas, peticiones HTTP, middlewares)
+flask_sqlalchemy            # ORM de Flask (interactuar con la BD usando modelos/entidades en lugar de SQL directo)
+flask_cors                  # Habilita CORS (permite que el frontend en React consuma la API)
+pymysql                     # Driver/conector de Python para conectarse a MySQL
+pyyaml                      # Permite leer archivos YAML (ej: application.yml para la configuración)
+
+marshmallow                 # Librería para validar y serializar datos (ej: validar DTOs)
+marshmallow-sqlalchemy      # Integración entre Marshmallow y SQLAlchemy (serialización directa de modelos)
+python-dotenv               # Cargar variables de entorno desde un archivo .env (opcional, útil en despliegue)
