@@ -1,4 +1,4 @@
-from marshmallow import Schema, fields, validate, ValidationError, validates_schema
+from marshmallow import Schema, fields, validate, ValidationError, validates_schema # type: ignore
 
 class VehicleDTO(Schema):
     id = fields.Int(dump_only=True)
