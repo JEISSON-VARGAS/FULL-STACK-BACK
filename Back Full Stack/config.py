@@ -7,7 +7,7 @@ class Config:
 
     def get_database_uri(self):
         db = self.cfg["database"]
-        return f"{db['driver']}://{db['user']}:{db['password']}@{db['host']}:{db['port']}/{db['name']}"
+        return f"{db['driver']}://{db['user']}:{db['password']}@{db['host']}:{db['port']}/{db['name']}?ssl_ca=certificado.pem"
 
     def get_debug(self):
         return self.cfg["app"]["debug"]

@@ -4,8 +4,8 @@ app:
   port: 8080
 database:
   driver: mysql+pymysql
-  host: mysql
-  port: 3306
-  name: full_stack
-  user: app
-  password: app123
+  host: gateway01.us-west-2.prod.aws.tidbcloud.com
+  port: 4000
+  name: test
+  user: 3ip8pQxobi57T7v.root
+  password: 3v5SxuBEenEtMVaL
