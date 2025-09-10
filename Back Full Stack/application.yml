@@ -4,8 +4,8 @@ app:
   port: 8080
 database:
   driver: mysql+pymysql
-  host: host.docker.internal
+  host: mysql
   port: 3306
   name: full_stack
-  user: root
-  password: ""
+  user: app
+  password: app123
